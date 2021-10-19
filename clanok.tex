@@ -41,7 +41,7 @@ Prototypy týchto aut už v dnešnej dobe existujú a tento článok analyzuje i
 
 
 
-\section{Úvod}
+\section{Úvod}	\label{uvod}
 
 %Motivujte čitateľa a vysvetlite, o čom píšete. Úvod sa väčšinou nedelí na časti.
 
@@ -50,87 +50,103 @@ Prototypy týchto aut už v dnešnej dobe existujú a tento článok analyzuje i
 %Dôležité súvislosti sú uvedené v častiach~\ref{dolezita} a~\ref{dolezitejsia}.
 %Záverečné poznámky prináša časť~\ref{zaver}.
 
-Niet pochýb, že autonómne riadená doprava by bola bezpečnejšia ako tá dnešná.
-Štúdia NHTSA(ref), ktorá sa zaoberá hlavnými dôvodmi dopravných nehôd, tvrdí, 
-že 2\% sú zapríčinené prostredím, d'alšie 2\% sú spôsobené nedostatkami vozidiel, 
-neznáme príčiny tvoria taktiež 2\% a celých 94\% je tvorených našou (l'udskou) chybou.
+Podľa štúdii National Highway Traffic Safety Administration (NHTSA)\cite{nhtsa} sa do hlavných dôvodov autonehôd zahŕňajú poruchy vozidiel, pochybenie vodiča, environmentálne faktory a neznáme príčiny. Vodiči zapríčinia okolo 94\% autonehôd. Ďalej sa to delí do kategórie vozidiel, ktoré zapríčiňujú 2\% nehôd. Nasledujú environmentálne faktory a zahŕňajú tiež 2\% škôd. 
+Na poslednom mieste sú faktory neznámych príčin, ktoré sa pohybujú okolo 2\%. Z tohto vieme vydedukovať, že 94\% takýchto nešťastí zmizne vďaka odbremeneniu vodičov od riadenia vozidla 
+a zavedenia autonómnych aut do každodenného života ľudí. Poďme sa teda hlbšie pozrieť na autonómne autá.
+% \ref{https://crashstats.nhtsa.dot.gov/Api/Public/ViewPublication/812506}
+%Gunči, linči.
+%Interesting.
+%Hmmmm, yeeees.~\ref{nejaka}.
+%Coooly pooly.~\ref{dolezita} a~\ref{dolezitejsia}.
+%Likey bikey.~\ref{zaver}.
 
 
-\section{Pokračovanie}
+\section{Úrovne automatizácie jazdy}
 
-Gunči, linči.
+Existuje 6 úrovní delenia automatizovanej jazdy.\cite{understanding-av} Tieto úrovne sa delia do dvoch skupín, kde prevažne človek monitoruje prostredie jazdy a kde prevažne systém monitoruje prostredie jazdy. 
+Každá úroveň taktiež popisuje rolu vodiča a rolu systému, ktorá sa týka ovládania riadiacich funkcii auta. Prvá úroveň je úplna manuálna kontrola vodiča, kde človek vykonáva všetky riadiace úkony, ako zabáčanie, brzdenie, prídávanie a pod. Druhá úroveň obsahuje jeden automatizovaný systém a tým je tempomat. Tretia úroveň zahrňuje čiastočnú automatizáciu. Systém ADAS[\ref{fungovanie-adas}] sa stará o túto čiastočnú automatizáciu a vie vykonávať lokalizáciu, zabáčanie, rozpoznávanie značiek, brzdenie, detekciu slepého bodu a veľa ďalších. Človek stále monitoruje  všetky úkony a vie prevziať kontrolu ľubovoľne. Teraz sa dostávame k bodu, kde prevažne systém monitoruje prostredie jazdy. Štvrtá úroveň pozostáva z podmienečnej automatizácie. Auto má schopnosť detekovať prostredie a vie robiť väčšinu jazdných úkonov, ale ľudské schvaľovanie jazdy a prípadne zakročenie je nutné. Piata úroveň je vysoká automatizácia. Systém ovláda všetky operácie jazdy pod určitými podmienkami. Geofencing\footnote{Použitie technológie GPS alebo RFID na vytvorenie virtuálnej geografickej hranice, ktorá umožňuje softvéru spustiť reakciu, keď zariadenie vstúpi alebo opustí konkrétnu oblasť.} je nevyhnutný a ľudské zasiahnutie je stále možnosťou. Šiešta úroveň prezentuje úplnu automatizáciu, kde auto ovláda všetky úkony pod hocijakými podmienkami a ľudská interakcia alebo pozornosť nie je vôbec vyžadovaná.
+%Tabulka automatizacie vozidla
 
-Interesting.
-Hmmmm, yeeees.~\ref{nejaka}.
-Coooly pooly.~\ref{dolezita} a~\ref{dolezitejsia}.
-Likey bikey.~\ref{zaver}.
+\section{Advanced Driver Assistance Systems}	\label{adas}
+
+Podľa uvedenej štatistiky[\ref{uvod}] vieme, že skoro všetky autonehody sú zapríčinené ľudskou chybou. Vďaka ADAS-u (Advanced Driver Assistance Systems) vieme tieto škody redukovať. ADAS obsahuje základné bezpečnostné aplikácie, ku ktorým patrí detekcia a vyhýbanie chodcov, varovanie a oprava vybočenia z jazdného pruhu, rozpoznávanie dopravných značiek, núdzové brzdenie a detekcia slepého bodu. ADAS toto všetko zvláda vďaka jeho najnovším štandartom rozhrania. Používa viacero algoritmov založených na videní, ktoré v realnom čase podporujú subsystémy multimédii, spoločného spracovania videnia a syntézy senzorov.\cite{Autonomous-car}
+
+\subsection{Fungovanie systému ADAS}		\label{fungovanie-adas}
+
+ADAS\cite{ADAS} vykonáva svoje funkcie pomocou autonómnych aplikačných riešení. Autonómne aplikačné riešenia sú rozčlenené do rôznych čipov, ktoré sa volajú SoC\footnote{Integrovaný obvod, ktorý spája všetky alebo väčšinu komponentov počítača alebo iného elekrického systému.}. Tieto čipy zlučujú senzory s akčnými členmi pomocou rozhraní a vysoko výkonných ECU\footnote{Vstavaný systém v automobilovej elektronike, ktorý spravuje jeden alebo viac elektrických systémov alebo subsystémov.}. Samoriadiace autá používajú niekoľko takýchto aplikácii a technológii na získanie 360-stupňového videnia, ktoré sa sústreďujú aj na blízke a aj na ďaleké okolie. ADAS systémy sa stále aktívne zdokonaľujú s pomocou tzv. vnoreného videnia. Implementácia kamier do vozidla tiež zahŕňa funkciu umelej inteligencie, ktorá pomocou senzorovej fúzie\footnote{Proces kombinovania senzorických údajov, aby výsledná informácia mala menšiu neistotu.} rozpoznáva a spracúva objekty. Táto umelá inteligencia a senzorová fúzia pracujú podobne ako ľudský mozog pri spracúvaní informácii. Kombinujú sa veľké množstvá údajov vďaka softvéru na rozpoznávanie obrazu, ultrazvukových senzorov, 
+lidaru a radaru. Umelá inteligencia vie analyzovať video v reálnom čase, rozpoznať všetky objekty, a vymerať požadovanú reakciu na okolie. Táto technológia vie reagovať rýchlejšie, ako by dokázal ľudský vodič. 
+%obrazok 360stupnoveho videnia vozidla
+
+\subsection{Funkcie ADAS systému} \label{adas-funkie}
 
 
 
-\section{Nejaká časť} \label{nejaka}
 
-Z obr.~\ref{f:rozhod} je všetko jasné. 
 
-\begin{figure*}[tbh]
-\centering
+%\section{Nejaká časť} \label{nejaka}
+
+%Z obr.~\ref{f:rozhod} je všetko jasné. 
+
+%\begin{figure*}[tbh]
+%\centering
 %\includegraphics[scale=1.0]{diagram.pdf}
-Aj text môže byť prezentovaný ako obrázok. Stane sa z neho označný plávajúci objekt. Po vytvorení diagramu zrušte znak \texttt{\%} pred príkazom \verb|\includegraphics| označte tento riadok ako komentár (tiež pomocou znaku \texttt{\%}).
-\caption{Rozhodujúci argument.}
-\label{f:rozhod}
-\end{figure*}
+%Aj text môže byť prezentovaný ako obrázok. Stane sa z neho označný plávajúci objekt. Po vytvorení diagramu zrušte znak \texttt{\%} pred príkazom \verb|\includegraphics| označte tento riadok ako komentár (tiež pomocou znaku \texttt{\%}).
+%\caption{Rozhodujúci argument.}
+%\label{f:rozhod}
+%\end{figure*}
 
 
 
-\section{Iná časť} \label{ina}
+%\section{Iná časť} \label{ina}
 
-Základným problémom je teda\ldots{} Najprv sa pozrieme na nejaké vysvetlenie (časť~\ref{ina:nejake}), a potom na ešte nejaké (časť~\ref{ina:nejake}).\footnote{Niekedy môžete potrebovať aj poznámku pod čiarou.}
+%Základným problémom je teda\ldots{} Najprv sa pozrieme na nejaké vysvetlenie (časť~\ref{ina:nejake}), a potom na ešte nejaké (časť~\ref{ina:nejake}).
 
-Môže sa zdať, že problém vlastne nejestvuje\cite{Coplien:MPD}, ale bolo dokázané, že to tak nie je~\cite{Czarnecki:Staged, Czarnecki:Progress}. Napriek tomu, aj dnes na webe narazíme na všelijaké pochybné názory\cite{PLP-Framework}. Dôležité veci možno \emph{zdôrazniť kurzívou}.
-
-
-\subsection{Nejaké vysvetlenie} \label{ina:nejake}
-
-Niekedy treba uviesť zoznam:
-
-\begin{itemize}
-\item jedna vec
-\item druhá vec
-	\begin{itemize}
-	\item x
-	\item y
-	\end{itemize}
-\end{itemize}
-
-Ten istý zoznam, len číslovaný:
-
-\begin{enumerate}
-\item jedna vec
-\item druhá vec
-	\begin{enumerate}
-	\item x
-	\item y
-	\end{enumerate}
-\end{enumerate}
+%Môže sa zdať, že problém vlastne nejestvuje\cite{Coplien:MPD}, ale bolo dokázané, že to tak nie je~\cite{Czarnecki:Staged, Czarnecki:Progress}. Napriek tomu, aj dnes na webe narazíme na všelijaké pochybné názory\cite{PLP-Framework}. Dôležité veci možno \emph{zdôrazniť kurzívou}.
 
 
-\subsection{Ešte nejaké vysvetlenie} \label{ina:este}
+%\subsection{Nejaké vysvetlenie} \label{ina:nejake}
 
-\paragraph{Veľmi dôležitá poznámka.}
-Niekedy je potrebné nadpisom označiť odsek. Text pokračuje hneď za nadpisom.
+%Niekedy treba uviesť zoznam:
+
+%\begin{itemize}
+%\item jedna vec
+%\item druhá vec
+%	\begin{itemize}
+%	\item x
+%	\item y
+%	\end{itemize}
+%\end{itemize}
+
+%Ten istý zoznam, len číslovaný:
+
+%\begin{enumerate}
+%\item jedna vec
+%\item druhá vec
+%	\begin{enumerate}
+%	\item x
+%	\item y
+%	\end{enumerate}
+%\end{enumerate}
 
 
+%\subsection{Ešte nejaké vysvetlenie} \label{ina:este}
 
-\section{Dôležitá časť} \label{dolezita}
+%\paragraph{Veľmi dôležitá poznámka.}
+%Niekedy je potrebné nadpisom označiť odsek. Text pokračuje hneď za nadpisom.
 
 
 
-
-\section{Ešte dôležitejšia časť} \label{dolezitejsia}
+%\section{Dôležitá časť} \label{dolezita}
 
 
 
 
-\section{Záver} \label{zaver} % prípadne iný variant názvu
+%\section{Ešte dôležitejšia časť} \label{dolezitejsia}
+
+
+
+
+%\section{Záver} \label{zaver} % prípadne iný variant názvu
 
 
 
