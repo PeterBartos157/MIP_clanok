@@ -1,6 +1,6 @@
 % Metódy inžinierskej práce
 
-\documentclass[10pt,twoside,slovak,a4paper]{coursepaper}
+\documentclass[10pt,slovak,a4paper]{coursepaper}
 
 \usepackage[slovak]{babel}
 %\usepackage[T1]{fontenc}
@@ -24,7 +24,7 @@
 	{\small \texttt{xbartosp2@stuba.sk}}
 	}
 
-\date{\small 12. október 2021} % upravte
+\date{\small 2. november 2021} % upravte
 
 
 
@@ -33,11 +33,7 @@
 \maketitle
 
 \begin{abstract}
-Prvý príchod aut sa datuje už ďaleko do minulosti a všeobecný fakt je, že nám umožnil zdolávať pomerne dlhé vzdialenosti za oveľa kratší čas. 
-Táto zvýšená rýchlosť nám skrátila čas na spracovávanie informácii a tým zväčšila šancu ohroziť a poškodiť naše okolie počas riadenia tohto vozidla. 
-Tiež vieme, že človek nedokáže konkurovať počítaču pri rýchlosti spracúvania informácii. Tak prečo nie autonómne autá? Funkcie auta by boli ovládané počítačom alebo umelou inteligenciou, 
-ktoré by rozhodovali kedy pridať plyn alebo brzdiť, kedy sa preradiť do iného pruhu alebo kedy zastaviť na prechode pre chodcov. 
-Prototypy týchto aut už v dnešnej dobe existujú a tento článok analyzuje ich modelovanie v oblasti softvérového inžinierstva.
+Prvý príchod aut sa datuje už ďaleko do minulosti a všeobecný fakt je, že nám umožnil zdolávať pomerne dlhé vzdialenosti za oveľa kratší čas. Táto zvýšená rýchlosť nám skrátila čas na spracovávanie informácii a tým zväčšila šancu ohroziť a poškodiť naše okolie počas riadenia tohto vozidla. Tiež vieme, že človek nedokáže konkurovať počítaču pri rýchlosti spracúvania informácii. Tak prečo nie autonómne autá? Funkcie auta by boli ovládané počítačom alebo umelou inteligenciou, ktoré by rozhodovali kedy pridať plyn alebo brzdiť, kedy sa preradiť do iného pruhu alebo kedy zastaviť na prechode pre chodcov. Prototypy týchto aut už v dnešnej dobe existujú a tento článok analyzuje ich modelovanie v oblasti softvérového inžinierstva.
 \end{abstract}
 
 
@@ -45,14 +41,18 @@ Prototypy týchto aut už v dnešnej dobe existujú a tento článok analyzuje i
 \section{Úvod}	\label{uvod}
 
 Podľa štúdii National Highway Traffic Safety Administration (NHTSA)\cite{nhtsa} sa do hlavných dôvodov autonehôd zahŕňajú poruchy vozidiel, pochybenie vodiča, environmentálne faktory a neznáme príčiny. Vodiči zapríčinia okolo 94\% autonehôd. Ďalej sa to delí do kategórie vozidiel, ktoré zapríčiňujú 2\% nehôd. Nasledujú environmentálne faktory a zahŕňajú tiež 2\% škôd. 
-Na poslednom mieste sú faktory neznámych príčin, ktoré sa pohybujú okolo 2\%. Z tohto vieme vydedukovať, že 94\% takýchto nešťastí zmizne vďaka odbremeneniu vodičov od riadenia vozidla 
-a zavedenia autonómnych aut do každodenného života ľudí. Poďme sa teda hlbšie pozrieť na autonómne autá.
+Na poslednom mieste sú faktory neznámych príčin, ktoré sa pohybujú okolo 2\%. Z týchto informácii je možné vydedukovať, že 94\% takýchto nešťastí zmizne vďaka odbremeneniu vodičov od riadenia vozidla a zavedenia autonómnych aut do každodenného života ľudí. Treba sa teda pozrieť hlbšie a zanalyzovať ako fungujú a operujú autonómne autá. Článok rozpracuje úrovne automatizácie autonómneho auta[\ref{urovne}], systémy autonómie[\ref{adas}], ich fungovanie[\ref{fungovanie-adas}], ich funkcie[\ref{adas-funkcie}], ako operuje autonómne auto[\ref{ako-av}] a zhrnutie týchto informácii na záver[\ref{zaver}].
 
-\section{Úrovne automatizácie jazdy}
+\section{Úrovne automatizácie jazdy} \label{urovne}
 
 Existuje 6 úrovní delenia automatizovanej jazdy.\cite{understanding-av} Tieto úrovne sa delia do dvoch skupín, kde prevažne človek monitoruje prostredie jazdy a kde prevažne systém monitoruje prostredie jazdy. 
 Každá úroveň taktiež popisuje rolu vodiča a rolu systému, ktorá sa týka ovládania riadiacich funkcii auta. Prvá úroveň je úplna manuálna kontrola vodiča, kde človek vykonáva všetky riadiace úkony, ako zabáčanie, brzdenie, prídávanie a pod. Druhá úroveň obsahuje jeden automatizovaný systém a tým je tempomat. Tretia úroveň zahrňuje čiastočnú automatizáciu. Systém ADAS[\ref{fungovanie-adas}] sa stará o túto čiastočnú automatizáciu a vie vykonávať lokalizáciu, zabáčanie, rozpoznávanie značiek, brzdenie, detekciu slepého bodu a veľa ďalších. Človek stále monitoruje  všetky úkony a vie prevziať kontrolu ľubovoľne. Teraz sa dostávame k bodu, kde prevažne systém monitoruje prostredie jazdy. Štvrtá úroveň pozostáva z podmienečnej automatizácie. Auto má schopnosť detekovať prostredie a vie robiť väčšinu jazdných úkonov, napr. predbehnúť pomaly pohybujúce vozidlo, ale ľudské schvaľovanie jazdných úkonov auta a prípadne zakročenie je nutné. Piata úroveň je vysoká automatizácia. Systém ovláda všetky operácie jazdy pod určitými podmienkami, napr. systém má povolené prevziať kontrolu nad vozidlom iba v mestských častiach, kde sa neprekračuje rýchlosť 50km/h. Geofencing\footnote{Použitie technológie GPS alebo RFID na vytvorenie virtuálnej geografickej hranice, ktorá umožňuje softvéru spustiť reakciu, keď zariadenie vstúpi alebo opustí konkrétnu oblasť.} je nevyhnutný a ľudské zasiahnutie je stále možnosťou. Šiešta úroveň prezentuje úplnu automatizáciu, kde auto ovláda všetky úkony pod hocijakými podmienkami a ľudská pozornosť nie je vôbec vyžadovaná a ľudská interakcia nie je možná.
 %Tabulka automatizacie vozidla
+\begin{figure}[h]
+\includegraphics[scale=0.4]{tabulka}
+\centering
+\caption{Tabuľka úrovní delenia automatizovanej jazdy\cite{understanding-av}}
+\end{figure}
 
 \section{Advanced Driver Assistance Systems}	\label{adas}
 
@@ -61,13 +61,15 @@ Podľa uvedenej štatistiky[\ref{uvod}] vieme, že skoro všetky autonehody sú 
 \subsection{Fungovanie systému ADAS}		\label{fungovanie-adas}
 
 ADAS\cite{ADAS} vykonáva svoje funkcie pomocou autonómnych aplikačných riešení. Autonómne aplikačné riešenia sú rozčlenené do rôznych čipov, ktoré sa volajú SoC\footnote{Integrovaný obvod, ktorý spája všetky alebo väčšinu komponentov počítača alebo iného elekrického systému.}. Tieto čipy zlučujú senzory s akčnými členmi pomocou rozhraní a vysoko výkonných ECU\footnote{Vstavaný systém v automobilovej elektronike, ktorý spravuje jeden alebo viac elektrických systémov alebo subsystémov.}. Samoriadiace autá používajú niekoľko takýchto aplikácii a technológii na získanie 360-stupňového videnia, ktoré sa sústreďujú aj na blízke a aj na ďaleké okolie. ADAS systémy sa stále aktívne zdokonaľujú s pomocou tzv. vnoreného videnia. Implementácia kamier do vozidla tiež zahŕňa funkciu umelej inteligencie, ktorá pomocou senzorovej fúzie\footnote{Proces kombinovania senzorických údajov, aby výsledná informácia mala menšiu neistotu.} rozpoznáva a spracúva objekty. Táto umelá inteligencia a senzorová fúzia pracujú podobne ako ľudský mozog pri spracúvaní informácii. Kombinujú sa veľké množstvá údajov vďaka softvéru na rozpoznávanie obrazu, ultrazvukových senzorov, 
-lidaru a radaru. Umelá inteligencia vie analyzovať video v reálnom čase, rozpoznať všetky objekty, a vymerať požadovanú reakciu na okolie. Táto technológia vie reagovať rýchlejšie, ako by dokázal ľudský vodič. 
+lidaru a radaru. Umelá inteligencia vie analyzovať video v reálnom čase, rozpoznať všetky objekty, a vymerať požadovanú reakciu na okolie. Táto technológia vie reagovať rýchlejšie, ako by dokázal ľudský vodič.
+%Obrázok senzoroveho vnimania autonomneho vozidla
 \begin{figure}[h]
-\includegraphics[scale=0.2]{ADAS_Diagram} 
+\includegraphics[scale=0.2]{ADAS_Diagram}
+\centering
 \caption{ADAS - senzorové vnímanie autonómneho vozidla\cite{diagram}}
 \end{figure}
 
-\subsection{Funkcie ADAS systému} \label{adas-funkie}
+\subsection{Funkcie ADAS systému} \label{adas-funkcie}
 
 Adaptívny tempomat...
 Diaľkové a pixelové svetlo bez oslnenia...
