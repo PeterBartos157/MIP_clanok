@@ -1,6 +1,6 @@
 % Metódy inžinierskej práce
 
-\documentclass[10pt,slovak,a4paper]{coursepaper}
+\documentclass[10pt,slovak,a4paper]{article}
 
 \usepackage[slovak]{babel}
 %\usepackage[T1]{fontenc}
@@ -50,7 +50,6 @@ Každá úroveň taktiež popisuje rolu vodiča a rolu systému, ktorá sa týka
 %Tabulka automatizacie vozidla
 \begin{figure}[h]
 \includegraphics[scale=0.4]{tabulka}
-\centering
 \caption{Tabuľka úrovní delenia automatizovanej jazdy\cite{understanding-av}}
 \end{figure}
 
@@ -63,11 +62,11 @@ Podľa uvedenej štatistiky[\ref{uvod}] vieme, že skoro všetky autonehody sú 
 ADAS\cite{ADAS} vykonáva svoje funkcie pomocou autonómnych aplikačných riešení. Autonómne aplikačné riešenia sú rozčlenené do rôznych čipov, ktoré sa volajú SoC\footnote{Integrovaný obvod, ktorý spája všetky alebo väčšinu komponentov počítača alebo iného elekrického systému.}. Tieto čipy zlučujú senzory s akčnými členmi pomocou rozhraní a vysoko výkonných ECU\footnote{Vstavaný systém v automobilovej elektronike, ktorý spravuje jeden alebo viac elektrických systémov alebo subsystémov.}. Samoriadiace autá používajú niekoľko takýchto aplikácii a technológii na získanie 360-stupňového videnia, ktoré sa sústreďujú aj na blízke a aj na ďaleké okolie. ADAS systémy sa stále aktívne zdokonaľujú s pomocou tzv. vnoreného videnia. Implementácia kamier do vozidla tiež zahŕňa funkciu umelej inteligencie, ktorá pomocou senzorovej fúzie\footnote{Proces kombinovania senzorických údajov, aby výsledná informácia mala menšiu neistotu.} rozpoznáva a spracúva objekty. Táto umelá inteligencia a senzorová fúzia pracujú podobne ako ľudský mozog pri spracúvaní informácii. Kombinujú sa veľké množstvá údajov vďaka softvéru na rozpoznávanie obrazu, ultrazvukových senzorov, 
 lidaru a radaru. Umelá inteligencia vie analyzovať video v reálnom čase, rozpoznať všetky objekty, a vymerať požadovanú reakciu na okolie. Táto technológia vie reagovať rýchlejšie, ako by dokázal ľudský vodič.
 %Obrázok senzoroveho vnimania autonomneho vozidla
-\begin{figure}[h]
+\begin{figure*}[h]
 \includegraphics[scale=0.2]{ADAS_Diagram}
 \centering
 \caption{ADAS - senzorové vnímanie autonómneho vozidla\cite{diagram}}
-\end{figure}
+\end{figure*}
 
 \subsection{Funkcie ADAS systému} \label{adas-funkcie}
 
