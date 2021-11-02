@@ -43,28 +43,14 @@ Prototypy týchto aut už v dnešnej dobe existujú a tento článok analyzuje i
 
 \section{Úvod}	\label{uvod}
 
-%Motivujte čitateľa a vysvetlite, o čom píšete. Úvod sa väčšinou nedelí na časti.
-
-%Uveďte explicitne štruktúru článku. Tu je nejaký príklad.
-%Základný problém, ktorý bol naznačený v úvode, je podrobnejšie vysvetlený v časti~\ref{nejaka}.
-%Dôležité súvislosti sú uvedené v častiach~\ref{dolezita} a~\ref{dolezitejsia}.
-%Záverečné poznámky prináša časť~\ref{zaver}.
-
 Podľa štúdii National Highway Traffic Safety Administration (NHTSA)\cite{nhtsa} sa do hlavných dôvodov autonehôd zahŕňajú poruchy vozidiel, pochybenie vodiča, environmentálne faktory a neznáme príčiny. Vodiči zapríčinia okolo 94\% autonehôd. Ďalej sa to delí do kategórie vozidiel, ktoré zapríčiňujú 2\% nehôd. Nasledujú environmentálne faktory a zahŕňajú tiež 2\% škôd. 
 Na poslednom mieste sú faktory neznámych príčin, ktoré sa pohybujú okolo 2\%. Z tohto vieme vydedukovať, že 94\% takýchto nešťastí zmizne vďaka odbremeneniu vodičov od riadenia vozidla 
 a zavedenia autonómnych aut do každodenného života ľudí. Poďme sa teda hlbšie pozrieť na autonómne autá.
-% \ref{https://crashstats.nhtsa.dot.gov/Api/Public/ViewPublication/812506}
-%Gunči, linči.
-%Interesting.
-%Hmmmm, yeeees.~\ref{nejaka}.
-%Coooly pooly.~\ref{dolezita} a~\ref{dolezitejsia}.
-%Likey bikey.~\ref{zaver}.
-
 
 \section{Úrovne automatizácie jazdy}
 
 Existuje 6 úrovní delenia automatizovanej jazdy.\cite{understanding-av} Tieto úrovne sa delia do dvoch skupín, kde prevažne človek monitoruje prostredie jazdy a kde prevažne systém monitoruje prostredie jazdy. 
-Každá úroveň taktiež popisuje rolu vodiča a rolu systému, ktorá sa týka ovládania riadiacich funkcii auta. Prvá úroveň je úplna manuálna kontrola vodiča, kde človek vykonáva všetky riadiace úkony, ako zabáčanie, brzdenie, prídávanie a pod. Druhá úroveň obsahuje jeden automatizovaný systém a tým je tempomat. Tretia úroveň zahrňuje čiastočnú automatizáciu. Systém ADAS[\ref{fungovanie-adas}] sa stará o túto čiastočnú automatizáciu a vie vykonávať lokalizáciu, zabáčanie, rozpoznávanie značiek, brzdenie, detekciu slepého bodu a veľa ďalších. Človek stále monitoruje  všetky úkony a vie prevziať kontrolu ľubovoľne. Teraz sa dostávame k bodu, kde prevažne systém monitoruje prostredie jazdy. Štvrtá úroveň pozostáva z podmienečnej automatizácie. Auto má schopnosť detekovať prostredie a vie robiť väčšinu jazdných úkonov, ale ľudské schvaľovanie jazdy a prípadne zakročenie je nutné. Piata úroveň je vysoká automatizácia. Systém ovláda všetky operácie jazdy pod určitými podmienkami. Geofencing\footnote{Použitie technológie GPS alebo RFID na vytvorenie virtuálnej geografickej hranice, ktorá umožňuje softvéru spustiť reakciu, keď zariadenie vstúpi alebo opustí konkrétnu oblasť.} je nevyhnutný a ľudské zasiahnutie je stále možnosťou. Šiešta úroveň prezentuje úplnu automatizáciu, kde auto ovláda všetky úkony pod hocijakými podmienkami a ľudská interakcia alebo pozornosť nie je vôbec vyžadovaná.
+Každá úroveň taktiež popisuje rolu vodiča a rolu systému, ktorá sa týka ovládania riadiacich funkcii auta. Prvá úroveň je úplna manuálna kontrola vodiča, kde človek vykonáva všetky riadiace úkony, ako zabáčanie, brzdenie, prídávanie a pod. Druhá úroveň obsahuje jeden automatizovaný systém a tým je tempomat. Tretia úroveň zahrňuje čiastočnú automatizáciu. Systém ADAS[\ref{fungovanie-adas}] sa stará o túto čiastočnú automatizáciu a vie vykonávať lokalizáciu, zabáčanie, rozpoznávanie značiek, brzdenie, detekciu slepého bodu a veľa ďalších. Človek stále monitoruje  všetky úkony a vie prevziať kontrolu ľubovoľne. Teraz sa dostávame k bodu, kde prevažne systém monitoruje prostredie jazdy. Štvrtá úroveň pozostáva z podmienečnej automatizácie. Auto má schopnosť detekovať prostredie a vie robiť väčšinu jazdných úkonov, napr. predbehnúť pomaly pohybujúce vozidlo, ale ľudské schvaľovanie jazdných úkonov auta a prípadne zakročenie je nutné. Piata úroveň je vysoká automatizácia. Systém ovláda všetky operácie jazdy pod určitými podmienkami, napr. systém má povolené prevziať kontrolu nad vozidlom iba v mestských častiach, kde sa neprekračuje rýchlosť 50km/h. Geofencing\footnote{Použitie technológie GPS alebo RFID na vytvorenie virtuálnej geografickej hranice, ktorá umožňuje softvéru spustiť reakciu, keď zariadenie vstúpi alebo opustí konkrétnu oblasť.} je nevyhnutný a ľudské zasiahnutie je stále možnosťou. Šiešta úroveň prezentuje úplnu automatizáciu, kde auto ovláda všetky úkony pod hocijakými podmienkami a ľudská pozornosť nie je vôbec vyžadovaná a ľudská interakcia nie je možná.
 %Tabulka automatizacie vozidla
 
 \section{Advanced Driver Assistance Systems}	\label{adas}
@@ -79,79 +65,9 @@ lidaru a radaru. Umelá inteligencia vie analyzovať video v reálnom čase, roz
 
 \subsection{Funkcie ADAS systému} \label{adas-funkie}
 
+\section{Ako operuje autonómne auto} \label{ako-av}
 
-
-
-
-%\section{Nejaká časť} \label{nejaka}
-
-%Z obr.~\ref{f:rozhod} je všetko jasné. 
-
-%\begin{figure*}[tbh]
-%\centering
-%\includegraphics[scale=1.0]{diagram.pdf}
-%Aj text môže byť prezentovaný ako obrázok. Stane sa z neho označný plávajúci objekt. Po vytvorení diagramu zrušte znak \texttt{\%} pred príkazom \verb|\includegraphics| označte tento riadok ako komentár (tiež pomocou znaku \texttt{\%}).
-%\caption{Rozhodujúci argument.}
-%\label{f:rozhod}
-%\end{figure*}
-
-
-
-%\section{Iná časť} \label{ina}
-
-%Základným problémom je teda\ldots{} Najprv sa pozrieme na nejaké vysvetlenie (časť~\ref{ina:nejake}), a potom na ešte nejaké (časť~\ref{ina:nejake}).
-
-%Môže sa zdať, že problém vlastne nejestvuje\cite{Coplien:MPD}, ale bolo dokázané, že to tak nie je~\cite{Czarnecki:Staged, Czarnecki:Progress}. Napriek tomu, aj dnes na webe narazíme na všelijaké pochybné názory\cite{PLP-Framework}. Dôležité veci možno \emph{zdôrazniť kurzívou}.
-
-
-%\subsection{Nejaké vysvetlenie} \label{ina:nejake}
-
-%Niekedy treba uviesť zoznam:
-
-%\begin{itemize}
-%\item jedna vec
-%\item druhá vec
-%	\begin{itemize}
-%	\item x
-%	\item y
-%	\end{itemize}
-%\end{itemize}
-
-%Ten istý zoznam, len číslovaný:
-
-%\begin{enumerate}
-%\item jedna vec
-%\item druhá vec
-%	\begin{enumerate}
-%	\item x
-%	\item y
-%	\end{enumerate}
-%\end{enumerate}
-
-
-%\subsection{Ešte nejaké vysvetlenie} \label{ina:este}
-
-%\paragraph{Veľmi dôležitá poznámka.}
-%Niekedy je potrebné nadpisom označiť odsek. Text pokračuje hneď za nadpisom.
-
-
-
-%\section{Dôležitá časť} \label{dolezita}
-
-
-
-
-%\section{Ešte dôležitejšia časť} \label{dolezitejsia}
-
-
-
-
-%\section{Záver} \label{zaver} % prípadne iný variant názvu
-
-
-
-%\acknowledgement{Ak niekomu chcete poďakovať\ldots}
-
+\section{Záver} \label{zaver}
 
 % týmto sa generuje zoznam literatúry z obsahu súboru literatura.bib podľa toho, na čo sa v článku odkazujete
 \bibliography{literatura}
