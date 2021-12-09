@@ -8,6 +8,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage{graphicx}
 \graphicspath{ {./MIP_clanok/} }
+\usepackage[table,xcdraw]{xcolor}
 \usepackage{url} % príkaz \url na formátovanie URL
 \usepackage{hyperref} % odkazy v texte budú aktívne (pri niektorých triedach dokumentov spôsobuje posun textu)
 
@@ -46,12 +47,36 @@ Podľa štúdii National Highway Traffic Safety Administration (NHTSA)\cite{nhts
 
 Existuje 6 úrovní delenia automatizovanej jazdy.\cite{understanding-av} Tieto úrovne sa delia do dvoch skupín, kde prevažne človek monitoruje prostredie jazdy a kde prevažne systém monitoruje prostredie jazdy. 
 Každá úroveň taktiež popisuje rolu vodiča a rolu systému, ktorá sa týka ovládania riadiacich funkcií auta. Prvá úroveň je úplna manuálna kontrola vodiča, kde človek vykonáva všetky riadiace úkony, ako zabáčanie, brzdenie, prídávanie a pod.\cite{understanding-av} Druhá úroveň obsahuje jeden automatizovaný systém a tým je tempomat. Tretia úroveň zahrňuje čiastočnú automatizáciu. Systém ADAS[\ref{fungovanie-adas}] sa stará o túto čiastočnú automatizáciu a vie vykonávať lokalizáciu, zabáčanie, rozpoznávanie značiek, brzdenie, detekciu slepého bodu a veľa ďalších. Človek stále monitoruje  všetky úkony a vie prevziať kontrolu ľubovoľne\cite{ADAS}. Teraz sa dostávame k bodu, kde prevažne systém monitoruje prostredie jazdy. Štvrtá úroveň pozostáva z podmienečnej automatizácie. Auto má schopnosť detekovať prostredie a vie robiť väčšinu jazdných úkonov, napr. predbehnúť pomaly pohybujúce vozidlo, ale ľudské schvaľovanie jazdných úkonov auta a prípadne zakročenie je nutné. Piata úroveň je vysoká automatizácia. Systém ovláda všetky operácie jazdy pod určitými podmienkami, napr. systém má povolené prevziať kontrolu nad vozidlom iba v mestských častiach, kde sa neprekračuje rýchlosť 50km/h. Geofencing\footnote{Použitie technológie GPS alebo RFID na vytvorenie virtuálnej geografickej hranice, ktorá umožňuje softvéru spustiť reakciu, keď zariadenie vstúpi alebo opustí konkrétnu oblasť.} je nevyhnutný a ľudské zasiahnutie je stále možnosťou. Šiešta úroveň reprezentuje úplnu automatizáciu, kde auto ovláda všetky úkony pod hocijakými podmienkami a ľudská pozornosť nie je vôbec vyžadovaná a ľudská interakcia nie je možná\cite{understanding-av}. Tabuľka nižšie prehľadne spracúva úrovne automatizácie aut [\ref{tabulka}].
-%Tabulka automatizacie vozidla
-\begin{figure}[h]	\label{tabulka}
-\includegraphics[scale=0.33]{tabulka}
-\centering
+
+\begin{table}[]
 \caption{Tabuľka úrovní delenia automatizovanej jazdy\cite{understanding-av}\cite{trevor}}
-\end{figure}
+\label{tabulka}
+\resizebox{5in}{!}{%
+\begin{tabular}{ccc|ccc}
+\multicolumn{1}{c|}{\textbf{\begin{tabular}[c]{@{}c@{}}Nulová \\ automatizácia\end{tabular}}} &
+  \multicolumn{1}{c|}{\textbf{\begin{tabular}[c]{@{}c@{}}Assistencia \\ vodiča\end{tabular}}} &
+  \textbf{\begin{tabular}[c]{@{}c@{}}Čiastočná \\ automatizácia\end{tabular}} &
+  \multicolumn{1}{c|}{\textbf{\begin{tabular}[c]{@{}c@{}}Prípadná \\ automatizácia\end{tabular}}} &
+  \multicolumn{1}{c|}{\textbf{\begin{tabular}[c]{@{}c@{}}Vysoká \\ automatizácia\end{tabular}}} &
+  \textbf{\begin{tabular}[c]{@{}c@{}}Úplna \\ automatizácia\end{tabular}} \\ \hline
+\multicolumn{1}{c|}{\begin{tabular}[c]{@{}c@{}}Úplna \\ manuálna\\  kontrola \\ vodiča\end{tabular}} &
+  \multicolumn{1}{c|}{\begin{tabular}[c]{@{}c@{}}Vozidlo má \\ jediný \\ automatizovaný \\ systém \\ - tempomat\end{tabular}} &
+  \begin{tabular}[c]{@{}c@{}}Čiastočná \\ automatizácia \\ pomocou \\ systému ADAS\end{tabular} &
+  \multicolumn{1}{c|}{\begin{tabular}[c]{@{}c@{}}Schopnosť \\ detekcie\\  prostredia,\\  informované \\ rozhodnutia,\\  nevyhnutná \\ kontrola\\  vodiča a jeho\\  zasiahnutie\end{tabular}} &
+  \multicolumn{1}{c|}{\begin{tabular}[c]{@{}c@{}}Schopnosť \\ samoriadenia\\  len v určitých \\ podmienkach \\ obmedzované\\  legislatívou,\\  človek má\\  stále možnosť\\  ovládať auto\end{tabular}} &
+  \begin{tabular}[c]{@{}c@{}}Nepotrebuje \\ kontrolu\\  a človek nemá\\  možnosť \\ zasiahnuť\end{tabular} \\ \hline
+\multicolumn{3}{c|}{\textbf{Človek monitoruje jazdné prostredie}} &
+  \multicolumn{3}{c}{\textbf{Systém monitoruje jazdné prostredie}}
+\end{tabular}%
+}
+\end{table}
+%Tabulka automatizacie vozidla
+%\begin{figure}[h]	\label{tabulka}
+%\includegraphics[scale=0.33]{tabulka}
+%\centering
+%\title{Úrovne automatizovanej jazdy}
+%\caption{Tabuľka úrovní delenia automatizovanej jazdy\cite{understanding-av}\cite{trevor}}
+%\end{figure}
 
 \section{Advanced Driver Assistance Systems}	\label{adas}
 
@@ -100,22 +125,27 @@ Auto na vizualizovanie svojho okolia potrebuje skombinovať všetky informácie 
 \subsection{Lokalizácia} \label{av-lokalizacia}
 
 Spracované informácie z vizualizácie a z niektorých ďalších funkcií teraz potrebuje auto využiť na určenie svojej lokality vo svete v reálnom čase. \cite{localization} Táto lokalizácia sa delí do troch kategórií, ktoré sa zaoberajú tým, že či systém pozná mapu a začiatočnú pozíciu vozidla. V prvej kategórií systém pozná aj mapu aj začiatočnú polohu. Druhá kategória sa zaoberá tým, že sa mapa pozná, ale nie začiatočná pozícia. Tretia kategória nepozná nič. Článok sa zameria na prvú kategóriu, kde systém pozná aj mapu aj začiatočnú polohu. 
-\newline Na určenie pozície vo svete používa systém detekciu orientačných bodov. Táto detekcia funguje vďaka systémovému vnímaniu, kde sa používajú výstupy senzorovej fúzie a používajú sa na rozpoznanie rôznych objektov, ktoré tvoria tieto orientačné body. Ďalej sa používa odometria\cite{localization}, čiže výstupy pohybových smart senzorov na určenie dosiaľ prejdenej vzdialenosti od začiatočnej pozície vozidla. Systém vie určiť túto vzdialenosť, pretože pozná obvod kolesa a koľkokrát sa koleso otočí. Podľa toho počíta prejdenú trasu. Vozidlo potrebuje poznať svoju polohu na centimetre a nie na meter ako u GNSS. Kvôli tomuto bola vytvorená nová technológia nazvaná "kinematika v reálnom čase" (RTK)\cite{rtk-gps}. RTK-GPS prijíma signály z GNSS spolu s korekčným prúdom, aby sa dosiahla prenosť polohy na centimeter. Nakoniec sa používa ešte ultra široko pásmový radar (UWB) senzor\cite{ultrawideband}, ktorý sa využíva na trilateráciu. Výstupy lokalizácie a vizualizácie sa ďalej spracúvaj v plánovaní.
+\newline Na určenie pozície vo svete používa systém detekciu orientačných bodov. Táto detekcia funguje vďaka systémovému vnímaniu, kde sa používajú výstupy senzorovej fúzie a používajú sa na rozpoznanie rôznych objektov, ktoré tvoria tieto orientačné body. Ďalej sa používa odometria\cite{localization}, čiže výstupy pohybových smart senzorov na určenie dosiaľ prejdenej vzdialenosti od začiatočnej pozície vozidla. Systém vie určiť túto vzdialenosť, pretože pozná obvod kolesa a koľkokrát sa koleso otočí. Podľa toho počíta prejdenú trasu. Vozidlo potrebuje poznať svoju polohu na centimetre a nie na meter ako u GNSS. Kvôli tomuto bola vytvorená nová technológia nazvaná "kinematika v reálnom čase" (RTK)\cite{rtk-gps}. RTK-GPS prijíma signály z GNSS spolu s korekčným prúdom, aby sa dosiahla presnosť polohy na centimeter. Nakoniec sa používa ešte ultra široko pásmový radar (UWB) senzor\cite{ultrawideband}, ktorý sa využíva na trilateráciu. Výstupy lokalizácie a vizualizácie sa ďalej spracúvaj v plánovaní.
 
 \subsection{Plánovanie} \label{av-planovanie}
 
-Vozidlo potrebuje teraz podľa výstupov z vizualizácie a lokalizácie predvídať prekážky, predvídať budúce pozície rôznych objektov a ľudí a rozhodovať, plánovať a upravovať trasu z bodu A do bodu B\cite{PPCC}. Sú tri typy takéhoto plánovania: plánovanie na vysokej úrovni, plánovanie na základe správania okolia a plánovanie cesty. Článok sa zameria na plánovanie podľa správania okolia. V tomto plánovaní trasy sa systém zameriava na dve veci, ktoré sú predvídanie prekážok a rozhodovanie. Predvídanie prekážok sa zostrojuje z výstupov vizualizácie a pomocou strojového učenia založenej na báze Gaussovej regresie procesu\cite{GPR}. Rozhodovanie autonómneho auta prebieha vďaka DL modelu tzv. "posilnené hlboké učenie" (DRL)\cite{DRL}, ktorý má schopnosť naučiť sa korektne reagovať na správanie prostredia v reálnom čase pre umožnenie bezpečnej navigácie vo všemožných podmienkach.
+Vozidlo potrebuje teraz podľa výstupov z vizualizácie a lokalizácie predvídať prekážky, predvídať budúce pozície rôznych objektov a ľudí a rozhodovať, plánovať a upravovať trasu z bodu A do bodu B\cite{PPCC}. Sú tri typy takéhoto plánovania: rámcové plánovanie, plánovanie na základe správania okolia a plánovanie cesty. Článok sa zameria na plánovanie podľa správania okolia. V tomto plánovaní trasy sa systém zameriava na dve veci, ktoré sú predvídanie prekážok a rozhodovanie. Predvídanie prekážok sa zostrojuje z výstupov vizualizácie a pomocou strojového učenia založenej na báze Gaussovej regresie procesu\cite{GPR}. Rozhodovanie autonómneho auta prebieha vďaka DL modelu tzv. "posilnené hlboké učenie" (DRL)\cite{DRL}, ktorý má schopnosť naučiť sa korektne reagovať na správanie prostredia v reálnom čase pre umožnenie bezpečnej navigácie vo všemožných podmienkach.
 
 \subsection{Ovládanie} \label{av-ovladanie}
 
-Kategória ovládania v operovaní autonómneho systému, tiež často označovaná ako "riadenie pohybu"\ alebo "motion control", je procesom premeny zámerov na akcie\cite{PPCC}. Jeho úlohou je realizovať plánované účely
-poskytnutím potrebných vstupov na hardvérovej úrovni, ktorá bude generovať požadované pohyby. Ovládače mapujú interakciu v reálnom svete z hľadiska sily a energie, zatiaľ čo kognitívne navigačné a plánovacie algoritmy v autonómnom systéme sa zvyčajne zaoberajú rýchlosťou a polohou vozidla vzhľadom na jeho prostredie. Ovládače ďalej generujú uhol natočenia volantu a určité zrýchlenie podľa plánovanej trajektórie a okolitého prostredia\cite{PPCC}. Ovládanie sa delí na dve odvetvia, kde sa používa buď "klasický ovládač"(PID) alebo "predvídavý ovládač"(MPC)\cite{PPCC}. Článok sa zameria na klasický ovládač, ktorý je zatiaľ najzaužívanejší v autonómnych autách. \newline PID ovládač je založený na spätnej väzbe a  nevyžaduje žiadny systémový model. Jeho riadiaci poriadok je založený na chybovom signáli:
+Kategória ovládania v operovaní autonómneho systému, tiež často označovaná ako "riadenie pohybu"\ alebo "motion control", je procesom premeny zámerov na akcie\cite{PPCC}. Jeho úlohou je realizovať plánované účely poskytnutím potrebných vstupov na hardvérovej úrovni, ktorá bude generovať požadované pohyby. Ovládače mapujú interakciu v reálnom svete z hľadiska sily a energie, zatiaľ čo kognitívne navigačné a plánovacie algoritmy v autonómnom systéme sa zvyčajne zaoberajú rýchlosťou a polohou vozidla vzhľadom na jeho prostredie. Ovládače ďalej generujú uhol natočenia volantu a určité zrýchlenie podľa plánovanej trajektórie a okolitého prostredia\cite{PPCC}. Ovládanie sa delí na dve odvetvia, kde sa používa buď "klasický ovládač"(PID) alebo "predvídavý ovládač"(MPC)\cite{PPCC}. Článok sa zameria na klasický ovládač, ktorý je zatiaľ najzaužívanejší v autonómnych autách. \newline PID ovládač je založený na spätnej väzbe a  nevyžaduje žiadny systémový model. Jeho riadiaci poriadok je založený na chybovom signáli:
 \begin{equation} \label{ovladanie-e}
 u(t) = k_d\dot{e} + k_pe + k_i\int e(t)dt,
 \end{equation}
 kde e je chybový signál a premenné k predstavujú proporcionálne, integrálne a derivačné výstupy ovládača\cite{PPCC}. Vďaka chybovému signálu kontrola spätnou väzbou môže znížiť negatívne vplyvy zmien parametrov, chyby modelovania, ako aj nežiaduce rušenia. Ďalej môže tiež modifikovať prechodné správanie systému, ako aj účinky šumu merania\cite{PPCC}. Samozrejme, ovládač takéhoto typu, ktorý sa spolieha na spatnú väzbu, je limitovaný tým, že ma zpozdenú reakciu, pretože na chyby reaguje len vtedy, keď sa vyskytnú. Tento problém sa ošetruje pridaním termínu tzv. "doprednej" väzby a pomáha prekonať obmedzenia spätnej väzby\cite{PPCC}. Ďalej sa implementujú ešte rôzne zložité algoritmy na odstránenie nedostatkov systému, ale napriek tomu sa technológia začína posúvať k DP ovládačom, kde sa používajú End2End a DRL softvérové modely\cite{PPCC}.
 
+\paragraph{Spoločenské súvislosti}
+\paragraph{Historické súvislosti}
+\paragraph{Technológia a ľudia}
+
 \section{Záver} \label{zaver}
+
+Článok uviedol predstavu, ako to vyzerá v softvére autonómneho auta, ale veľa vecí bolo preskočených, zjednodušených a vynechaných. Rozpracoval úrovne automatizácie, zhruba načrtol ako funguje systém ADAS, funkcie tohto systému a jeho senzory. Ďalej bol veľmi zjednodušene uvedený životný cyklus softvéru plne autonómneho auta, ale vytýčené boli len najzaužívanejšie aspekty tohto systému a jeho operovania v priestore a aj tieto aspekty veľmi elementárne vysvetlené. Ďalšia verzia článku by bola rozpracovaná hlbšie okolo senzorovej fúzie, všetkých jej typoch a rôznych softvéroch, ktoré umožňujú vizualizáciu autonómneho auta. To isté platí aj pre všetky typy lokalizácie a lokalizačné softvéry, senzory a siete zaužívané v tomto procese. Hlbšie preskúmané umelé inteligencie a rôzne softvéry, ktoré plánujú a rozhodujú nad reakciou na prostredie v samoriadiacom systéme auta. Určite by sa širšie tiež rozpracovala časť ovládania a ovládačov systému autonómneho auta. Úlohou tohto článku bolo len poskytnúť prehľad o týchto komplikovaných zariadeniach a lepšie pochopiť zložitosť ich softvérového inžinierstva.
 
 % týmto sa generuje zoznam literatúry z obsahu súboru literatura.bib podľa toho, na čo sa v článku odkazujete
 \bibliography{literatura}
